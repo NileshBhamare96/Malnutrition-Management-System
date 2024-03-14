@@ -1,0 +1,13 @@
+package com.app.service;
+
+import com.app.pojos.Meals;
+
+public class MealsServiceImpl implements IMealsService {
+
+	@Override
+	public Meals addNewMeal(String name, int calorie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

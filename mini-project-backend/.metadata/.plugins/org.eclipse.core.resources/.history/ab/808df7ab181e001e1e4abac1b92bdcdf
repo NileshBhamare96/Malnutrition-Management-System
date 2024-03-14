@@ -1,0 +1,42 @@
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.pojos.User;
+import com.app.service.IUserService;
+
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+@RequestMapping("/api/user")
+public class UserController {
+	@Autowired
+	private IUserService userService;
+	public UserController() {
+		System.out.println("in ctor of " + getClass());
+	}
+	
+	@PostMapping
+	public ResponseEntity<?> addUserDetails(@RequestBody User u) {
+		System.out.println("in add emp");
+		return new ResponseEntity<>(userService.addOrUpdateUserDetails(u), HttpStatus.OK);
+	}
+	
+	@PostMapping("/login/{email}/{password}")
+	public ResponseEntity<?> validateUser(@RequestParam String email, @RequestParam String password) {
+		System.out.println("in validate user " + getClass());
+		try {
+			return new ResponseEntity<>(userService.authenticateUser(email, password), HttpStatus.OK);
+		} catch (RuntimeException e) {
+			System.out.println("err in validateUser " + getClass() + " " + e);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+	}
+}

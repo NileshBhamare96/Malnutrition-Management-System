@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+D:\Advanced Java\mini-project-backend\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\108620826.index
+\spring-mini-project-demo\src\main\java
+D:\Advanced Java\mini-project-backend\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3251433283.index
+\spring-mini-project-demo\src\main\java

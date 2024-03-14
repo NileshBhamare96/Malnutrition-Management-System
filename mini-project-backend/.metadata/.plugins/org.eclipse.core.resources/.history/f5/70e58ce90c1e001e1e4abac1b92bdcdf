@@ -1,0 +1,38 @@
+package com.app.pojos;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer userId;
+	@Column(length = 30)
+	private String name;
+	@Column(unique = true, length = 30)
+	private String email;
+	@Column(length = 30)
+	private String password;
+	private int age;
+	private int weight;
+	private int height;
+	private Gender gender;
+	public User(String name, String email, String password, int age, int weight, int height, Gender gender) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.age = age;
+		this.weight = weight;
+		this.height = height;
+		this.gender = gender;
+	}
+
+}
